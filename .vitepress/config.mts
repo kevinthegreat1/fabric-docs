@@ -1,4 +1,5 @@
-import snippetPlugin from "markdown-it-vuepress-code-snippet-enhanced";
+import snippetPlugin from "./snippets_plugin_wuhfgiure.js"; // FIXME: debug
+
 import defineVersionedConfig from "vitepress-versioning-plugin";
 
 import { loadLocales, processExistingEntries } from "./i18n";

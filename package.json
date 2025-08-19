@@ -23,7 +23,7 @@
   "dependencies": {
     "@vueuse/core": "^12.4.0",
     "markdown-it-mathjax3": "^4.3.2",
-    "markdown-it-vuepress-code-snippet-enhanced": "github:IMB11/md-it-enhanced-snippets#dfb9fa2",
+    "markdown-it-vuepress-code-snippet-enhanced": "github:kevinthegreat1/md-it-enhanced-snippets#e1c9d8c",
     "medium-zoom": "^1.1.0",
     "syntax-mcfunction": "github:MinecraftCommands/syntax-mcfunction#458827b",
     "vidstack": "^1.12.12",
