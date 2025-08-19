@@ -26,6 +26,24 @@ export default defineVersionedConfig(
     locales: loadLocales(__dirname),
 
     markdown: {
+      preConfig(md) {
+        md.renderer.rules = new Proxy(md.renderer.rules, {
+          get(obj, prop) {
+            // if (prop === "fence") {
+            //   console.log(`Property "${prop}" was accessed. Obj: `, obj);
+            // }
+            return obj[prop];
+          },
+          set(obj, prop, value) {
+            if (prop === "fence") {
+              console.log(`Property "${prop}" is currently ${obj[prop]} and is being set to ${value}. Obj: `, obj);
+              console.trace();
+            }
+            obj[prop] = value;
+            return true;
+          }
+        });
+      },
       config(md) {
         // Use the snippet plugin (transclusion, etc.)
         md.use(snippetPlugin);
@@ -41,7 +59,7 @@ export default defineVersionedConfig(
             with: { type: "json" },
           }).then((lang) => ({ ...(lang.default as any), name: "mcfunction" })),
       ],
-      lineNumbers: true,
+      lineNumbers: false,
       math: true,
       async shikiSetup(shiki) {
         await shiki.loadTheme("github-light", "github-dark");
