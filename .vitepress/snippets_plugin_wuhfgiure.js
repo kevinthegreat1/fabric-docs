@@ -196,7 +196,7 @@ export default function (md, options) {
   // We wrap the fence renderer rule to load transclusion contents during render.
   // const fence = md.renderer.rules.fence;
   // Switching the order of line number and pre wrapper works...
-  const fence = lineNumberPlugin(preWrapperPlugin(highlightLinePlugin(fence_ehrbgurhug))); // FIXME: debug
+  const fence = preWrapperPlugin(lineNumberPlugin(highlightLinePlugin(fence_ehrbgurhug))); // FIXME: debug
   // Throw an error if the fence render rule is gone.
   if (!fence) {
     throw new Error("md.renderer.rules.fence is not defined. md_it_enhanced_snippets needs the fence render rule!");
