@@ -25,20 +25,16 @@ export const lineNumberPlugin = (fence, enable = true) => {
 
     const lines = code.split('\n')
 
-    const lineNumbersCode = [...Array(lines.length)]
-      .map(
-        (_, index) =>
-          `<span class="line-number">${index + startLineNumber}</span><br>`
-      )
-      .join('')
+    let lineNumbersCode = '';
+    for (let i = 0, len = lines.length; i < len; ++i) {
+      lineNumbersCode += `<span class="line-number">${i + startLineNumber}</span><br>`;
+    }
 
     const lineNumbersWrapperCode = `<div class="line-numbers-wrapper" aria-hidden="true">${lineNumbersCode}</div>`
 
-    const finalCode = rawCode
+    return rawCode
       .replace(/<\/div>$/, `${lineNumbersWrapperCode}</div>`)
       .replace(/"(language-[^"]*?)"/, '"$1 line-numbers-mode"')
-
-    return finalCode
   }
 }
 
